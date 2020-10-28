@@ -3,6 +3,7 @@ package br.natanael.android.androidthreads;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,8 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     private Button buttonIniciar;
     private int contador;
+    private Handler handler = new Handler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +33,17 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void run() {
-            for (int i = 0; i <= 10;i++){
+
+
+            for (int i = 0; i <= 15;i++){
                 contador = i;
                 Log.d("Thread", "contador: " + i);
 
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
                 runOnUiThread(new MyRunnable() {
                     @Override
@@ -42,11 +52,17 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
+                handler.post(new MyRunnable() {
+                    @Override
+                    public void run() {
+                        buttonIniciar.setText("contador: " + contador);
+                    }
+                });
+
+
+
+
             }
         }
     }
