@@ -29,10 +29,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonParar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
+        android:onClick="pararThread"
         android:text="PARAR THREAD"
         app:layout_constraintEnd_toEndOf="@+id/buttonIniciar"
         app:layout_constraintTop_toBottomOf="@+id/buttonIniciar" />

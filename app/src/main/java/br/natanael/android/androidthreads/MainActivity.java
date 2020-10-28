@@ -10,8 +10,10 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private Button buttonIniciar;
+    private Button buttonParar;
     private int contador;
     private Handler handler = new Handler();
+    private boolean pararExecucao = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,15 +21,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         buttonIniciar = findViewById(R.id.buttonIniciar);
+        buttonParar = findViewById(R.id.buttonParar);
     }
 
     public void iniciarThread(View view){
         /*MyThread thread = new MyThread();
         thread.start();*/
 
+        pararExecucao = false;
         MyRunnable runnable = new MyRunnable();
         new Thread(runnable).start();
     }
+
+    public  void pararThread(View view){
+        pararExecucao = true;
+
+    }
+
 
     class MyRunnable implements Runnable{
 
@@ -36,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
 
 
             for (int i = 0; i <= 15;i++){
+
+                if(pararExecucao)
+                    return;
+
                 contador = i;
                 Log.d("Thread", "contador: " + i);
 
@@ -53,16 +67,12 @@ public class MainActivity extends AppCompatActivity {
                 });
 
 
-                handler.post(new MyRunnable() {
+/*                handler.post(new MyRunnable() {
                     @Override
                     public void run() {
                         buttonIniciar.setText("contador: " + contador);
                     }
-                });
-
-
-
-
+                });*/
             }
         }
     }
