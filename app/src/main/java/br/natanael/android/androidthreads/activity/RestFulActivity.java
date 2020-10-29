@@ -1,4 +1,4 @@
-package br.natanael.android.androidthreads;
+package br.natanael.android.androidthreads.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +18,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import br.natanael.android.androidthreads.R;
 
 public class RestFulActivity extends AppCompatActivity {
 

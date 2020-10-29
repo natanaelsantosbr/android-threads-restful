@@ -1,4 +1,4 @@
-package br.natanael.android.androidthreads;
+package br.natanael.android.androidthreads.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import br.natanael.android.androidthreads.R;
 
 public class MainActivity extends AppCompatActivity {
     private Button buttonIniciar;

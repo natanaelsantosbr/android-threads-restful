@@ -1,14 +1,15 @@
-package br.natanael.android.androidthreads;
+package br.natanael.android.androidthreads.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import br.natanael.android.androidthreads.R;
 
 public class AsyncTaskActivity extends AppCompatActivity {
 
