@@ -50,7 +50,7 @@ public class RetrofitActivity extends AppCompatActivity {
     private void recuperarCEPRetrovit()
     {
         ICEPService service = retrofit.create(ICEPService.class);
-        Call<CEP> call = service.recuperarCep();
+        Call<CEP> call = service.recuperarCep("01310100");
 
         //Criar tarefa assincrona (Enquiuu)
         call.enqueue(new Callback<CEP>() {
