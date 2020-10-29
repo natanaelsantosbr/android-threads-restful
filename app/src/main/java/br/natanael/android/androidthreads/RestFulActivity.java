@@ -32,16 +32,64 @@ public class RestFulActivity extends AppCompatActivity {
         buttonRecuperar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyTask task = new MyTask();
+                ConsumirListaDeBlockchain task = new ConsumirListaDeBlockchain();
                 String urlApi = "https://blockchain.info/ticker";
-                task.execute(urlApi);
+                String urlCep = "https://viacep.com.br/ws/72304052/json/";
+
+                task.execute(urlCep);
 
 
             }
         });
     }
 
-    class MyTask extends AsyncTask<String, Void, String>
+    class ConsumirCep extends AsyncTask<String, Void, String>
+    {
+        @Override
+        protected String doInBackground(String... strings) {
+            String stringUrl = strings[0];
+            StringBuffer buffer = new StringBuffer();
+
+            try {
+                URL url = new URL(stringUrl);
+
+                HttpURLConnection conexao = (HttpURLConnection)  url.openConnection();
+
+                //Recupera os dados em bytes
+                InputStream inputStream =  conexao.getInputStream();
+
+                //converter bytes em caracteres normais
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+
+                //leitura dos caracteres normais
+                BufferedReader reader = new BufferedReader(inputStreamReader);
+
+                String linha  = "";
+
+                while((linha = reader.readLine()) != null){
+                    buffer.append(linha);
+                }
+
+                return  buffer.toString();
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            textResultado.setText(s);
+        }
+    }
+
+    class ConsumirListaDeBlockchain extends AsyncTask<String, Void, String>
     {
         @Override
         protected void onPreExecute() {
