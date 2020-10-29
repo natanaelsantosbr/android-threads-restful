@@ -174,32 +174,24 @@ public class RestFulActivity extends AppCompatActivity {
             super.onPostExecute(s);
 
             JSONObject jsonObject = null;
-            String cep = "";
-            String logradouro = "";
-            String complemento = "";
-            String bairro  = "";
-            String localidade = "";
-            String uf = "";
-
-
+            String objetoValor = null;
+            String valorMoeda = "";
+            String simbolo = "";
 
             try {
                 jsonObject = new JSONObject(s);
-                cep = jsonObject.getString("cep");
-                logradouro = jsonObject.getString("logradouro");
-                complemento = jsonObject.getString("complemento");
-                bairro = jsonObject.getString("bairro");
-                localidade = jsonObject.getString("localidade");
-                uf = jsonObject.getString("uf");
+                objetoValor = jsonObject.getString("BRL");
 
+                JSONObject jsonObjectReal = new JSONObject(objetoValor);
+                valorMoeda = jsonObjectReal.getString("last");
+                simbolo = jsonObjectReal.getString("symbol");
 
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-//            textResultado.setText(s);
-            textResultado.setText("cep: " +  cep + " \n" + "logradouro: " + logradouro + "\n complemento: " + complemento + "\n bairro: " + bairro + "\n localidade: " + localidade + "\n uf:" + uf);
+            textResultado.setText(valorMoeda + " - " + simbolo);
         }
     }
 }
