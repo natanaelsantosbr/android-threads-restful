@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.RetrofitGetActivity"
+    tools:context=".activity.RetrofitListActivity"
     android:orientation="vertical"
     android:gravity="center">
 
     <Button
-        android:id="@+id/btnProcessar"
+        android:id="@+id/btnLista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Processar" />
+        android:text="Processar"></Button>
 
     <TextView
-        android:id="@+id/txtResultado"
+        android:id="@+id/txtLinha"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+    </TextView>
+
 </LinearLayout>

@@ -18,7 +18,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RetrofitActivity extends AppCompatActivity {
+public class RetrofitGetActivity extends AppCompatActivity {
 
     private Button btnProcessar;
     private TextView txtResultado;
@@ -46,6 +46,10 @@ public class RetrofitActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
 
     private void recuperarCEPRetrovit()
     {
