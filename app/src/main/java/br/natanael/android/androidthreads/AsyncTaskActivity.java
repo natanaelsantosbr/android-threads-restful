@@ -65,6 +65,9 @@ public class AsyncTaskActivity extends AppCompatActivity {
             super.onProgressUpdate(values);
             progressBar.setProgress(values[0]);
         }
+        private void Teste() {
+
+        }
 
         @Override
         protected void onPostExecute(String s) {
