@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,15 +39,20 @@ public class RestFulActivity extends AppCompatActivity {
                 String urlApi = "https://blockchain.info/ticker";
                 String urlCep = "https://viacep.com.br/ws/72304052/json/";
 
-                task.execute(urlCep);
+                task.execute(urlApi);
 
 
             }
         });
     }
 
-    class ConsumirCep extends AsyncTask<String, Void, String>
+    class ConsultarCep extends AsyncTask<String, Void, String>
     {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
         @Override
         protected String doInBackground(String... strings) {
             String stringUrl = strings[0];
@@ -85,9 +93,37 @@ public class RestFulActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            textResultado.setText(s);
+
+            JSONObject jsonObject = null;
+            String cep = "";
+            String logradouro = "";
+            String complemento = "";
+            String bairro  = "";
+            String localidade = "";
+            String uf = "";
+
+
+
+            try {
+                jsonObject = new JSONObject(s);
+                cep = jsonObject.getString("cep");
+                logradouro = jsonObject.getString("logradouro");
+                complemento = jsonObject.getString("complemento");
+                bairro = jsonObject.getString("bairro");
+                localidade = jsonObject.getString("localidade");
+                uf = jsonObject.getString("uf");
+
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+//            textResultado.setText(s);
+            textResultado.setText("cep: " +  cep + " \n" + "logradouro: " + logradouro + "\n complemento: " + complemento + "\n bairro: " + bairro + "\n localidade: " + localidade + "\n uf:" + uf);
         }
     }
+
 
     class ConsumirListaDeBlockchain extends AsyncTask<String, Void, String>
     {
@@ -136,7 +172,34 @@ public class RestFulActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            textResultado.setText(s);
+
+            JSONObject jsonObject = null;
+            String cep = "";
+            String logradouro = "";
+            String complemento = "";
+            String bairro  = "";
+            String localidade = "";
+            String uf = "";
+
+
+
+            try {
+                jsonObject = new JSONObject(s);
+                cep = jsonObject.getString("cep");
+                logradouro = jsonObject.getString("logradouro");
+                complemento = jsonObject.getString("complemento");
+                bairro = jsonObject.getString("bairro");
+                localidade = jsonObject.getString("localidade");
+                uf = jsonObject.getString("uf");
+
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+//            textResultado.setText(s);
+            textResultado.setText("cep: " +  cep + " \n" + "logradouro: " + logradouro + "\n complemento: " + complemento + "\n bairro: " + bairro + "\n localidade: " + localidade + "\n uf:" + uf);
         }
     }
 }
