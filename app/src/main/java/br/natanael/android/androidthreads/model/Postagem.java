@@ -7,6 +7,12 @@ public class Postagem {
     private String title;
     private String body;
 
+    public Postagem(String userId, String title, String body) {
+        this.userId = userId;
+        this.title = title;
+        this.body = body;
+    }
+
     public String getUserId() {
         return userId;
     }
