@@ -7,6 +7,9 @@ public class Postagem {
     private String title;
     private String body;
 
+    public Postagem() {
+    }
+
     public Postagem(String userId, String title, String body) {
         this.userId = userId;
         this.title = title;

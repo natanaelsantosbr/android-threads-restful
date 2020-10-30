@@ -47,7 +47,7 @@ public class RetrofitPutActivity extends AppCompatActivity {
     }
 
     private void salvarPostagem() {
-        final Postagem postagem = new Postagem("1234",  null, "Corpo da mensagem");
+        Postagem postagem = new Postagem("1234",  null, "Corpo da mensagem");
 
         Call<Postagem> call = service.atualizarPostagem(2, postagem);
 
@@ -59,7 +59,7 @@ public class RetrofitPutActivity extends AppCompatActivity {
 
                     txtPut.setText("Codigo: " + response.code()
                             + " id: " + postagemResposta.getId()
-                            + " userId: " + postagem.getUserId()
+                            + " userId: " + postagemResposta.getUserId()
                             + " titulo: " + postagemResposta.getTitle()
                     + " body: " + postagemResposta.getBody());
                 }
